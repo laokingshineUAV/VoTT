@@ -1,0 +1,15 @@
+diff --git a/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js b/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
+index 347222b..bbd4600 100644
+--- a/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
++++ b/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
+@@ -61,7 +61,10 @@ class TagEditorModal extends React.Component {
+          * Called when change made to modal form
+          */
+         this.handleFormChange = (args) => {
++            console.log(args.formData.name)
++            console.log(args.formData.color)
+             this.setState({
++                
+                 currentTag: {
+                     name: args.formData.name,
+                     color: args.formData.color,
