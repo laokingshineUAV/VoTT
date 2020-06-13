@@ -1,15 +1,22 @@
 diff --git a/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js b/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
-index 347222b..bbd4600 100644
+index 347222b..7e032d9 100644
 --- a/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
 +++ b/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
-@@ -61,7 +61,10 @@ class TagEditorModal extends React.Component {
+@@ -39,6 +39,7 @@ class TagEditorModal extends React.Component {
+          * @param tag Tag to be edited
+          */
+         this.open = (tag) => {
++            console.log("aaaaaaa");
+             this.setState({
+                 isOpen: true,
+                 originalTag: tag,
+@@ -61,6 +62,9 @@ class TagEditorModal extends React.Component {
           * Called when change made to modal form
           */
          this.handleFormChange = (args) => {
-+            console.log(args.formData.name)
-+            console.log(args.formData.color)
++            console.log(args.formData.name);
++            console.log(args.formData.color);
++            console.log(args.formData.name);
              this.setState({
-+                
                  currentTag: {
                      name: args.formData.name,
-                     color: args.formData.color,
