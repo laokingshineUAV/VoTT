@@ -31,6 +31,7 @@
         "md5.js": "^1.3.5",
         "node-fetch": "^2.3.0",
         "node-int64": "^0.4.0",
+        "patch-package": "^6.2.2",
         "rc-align": "^2.4.5",
         "rc-checkbox": "^2.1.6",
         "rc-menu": "^7.4.21",
@@ -60,6 +61,7 @@
         "vott-react": "^0.2.10"
     },
     "scripts": {
+        "postinstall": "patch-package",
         "start": "nf start -p 3000",
         "compile": "tsc",
         "build": "react-scripts build",
@@ -82,8 +84,7 @@
         "test:ci": "cross-env CI=true npm run test",
         "test:coverage": "npm run test -- --coverage",
         "plato": "scripts/generate-report.sh -o report -v $(node -pe \"require('./package.json').version\") -c $(git rev-parse --short HEAD)",
-        "predebug": "npm run build && npm run webpack:dev",
-        "postinstall": "patch-package"
+        "predebug": "npm run build && npm run webpack:dev"
     },
     "eslintConfig": {
         "extends": "react-app"

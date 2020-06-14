@@ -1,0 +1,63 @@
+diff --git a/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js b/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
+index 347222b..10c4280 100644
+--- a/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
++++ b/node_modules/vott-react/dist/lib/components/tagEditorModal/tagEditorModal.js
+@@ -39,6 +39,7 @@ class TagEditorModal extends React.Component {
+          * @param tag Tag to be edited
+          */
+         this.open = (tag) => {
++            console.log("aaaaaaa");
+             this.setState({
+                 isOpen: true,
+                 originalTag: tag,
+@@ -61,14 +62,27 @@ class TagEditorModal extends React.Component {
+          * Called when change made to modal form
+          */
+         this.handleFormChange = (args) => {
++            var rgb = args.formData.color;
++            let hex = [];
++            var splits = rgb.split(',')
++            if (splits.lenght == 3){
++                rgb.split(',').map(color => {hex.push(coverNumToHex(color));});
++                color_hex:String = '#'+hex.join('');
++            }
+             this.setState({
+                 currentTag: {
+-                    name: args.formData.name,
+-                    color: args.formData.color,
++                    name: args.formData.name + ":" + splits.lenght,
++                    color: rgb,
+                 },
+             });
+         };
+         /**
++         * convert color rgb to hex
++         */
++        this.coverNumToHex = (num) => {
++            return (num | 1 << 8).toString(16).slice(1);
++        }
++        /**
+          * Called when "Ok" is clicked
+          */
+         this.handleOk = (e) => {
+@@ -96,6 +110,7 @@ TagEditorModal.createFormSchema = (colors, tagNameText, tagColorText) => {
+     for (const key of keys) {
+         values.push(colors[key]);
+     }
++    console.log(values[0])
+     return {
+         type: "object",
+         properties: {
+@@ -106,9 +121,9 @@ TagEditorModal.createFormSchema = (colors, tagNameText, tagColorText) => {
+             color: {
+                 title: tagColorText,
+                 type: "string",
+-                enum: values,
+-                default: values[0],
+-                enumNames: keys,
++                //enum: values,
++                //default: values[0],
++                //enumNames: keys,
+             },
+         },
+     };
